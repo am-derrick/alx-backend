@@ -3,7 +3,7 @@
 from base_caching import BaseCaching
 
 
-def FIFOCache(BaseCaching):
+class FIFOCache(BaseCaching):
     """FIFO Caching System"""
     def __init__(self):
         """initializes the class instance"""

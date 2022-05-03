@@ -4,7 +4,7 @@ from base_caching import BaseCaching
 from collections import OrderedDict
 
 
-def LFUCache(BaseCaching):
+class LFUCache(BaseCaching):
     """LFU Caching System"""
     def __init__(self):
         """initialises the class instance"""

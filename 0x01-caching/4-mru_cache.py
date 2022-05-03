@@ -4,7 +4,7 @@ from base_caching import BaseCaching
 from collections import OrderedDict
 
 
-def MRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """MRU Caching System"""
     def __init__(self):
         """initialises the class instance"""

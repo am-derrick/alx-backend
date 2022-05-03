@@ -3,7 +3,7 @@
 from base_caching import BaseCaching
 
 
-def LIFOCacche(BaseCaching):
+class LIFOCacche(BaseCaching):
     """LIFO caching sytem"""
     def __init__(self):
         """initialises the class instance"""

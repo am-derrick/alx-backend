@@ -3,7 +3,7 @@
 from base_caching import BaseCaching
 
 
-def LRUCache(BaseCaching):
+class LRUCache(BaseCaching):
     """LRU Caching system"""
     def __init__(self):
         """initialises the calss instance"""
