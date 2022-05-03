@@ -16,7 +16,7 @@ class LIFOCache(BaseCaching):
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             key_discarded = sort(self.cache_data)[-1]
             self.cache_data.pop(key_discarded)
-            print('DISCARD: {}'.format(key_discarded)
+            print('DISCARD: {}'.format(key_discarded))
 
     def get(self, key):
         """returns value of item linked to key"""
