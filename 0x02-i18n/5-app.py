@@ -2,6 +2,7 @@
 """Route module for App"""
 from flask import Flask, render_template
 from flask_babel import Babel
+from typing import Union
 
 
 users = {
@@ -36,13 +37,25 @@ def index() -> str:
 @babel.localeselector
 def get_locale() -> str:
     """determines best match for supported languages"""
-    if request.args.get('locale'):
-        locale = request.args.get('locale')
-        if locale in app.config['LANGUAGES']:
-            return locale
+    locale = request.args.get('locale')
+    if locale:
+        return locale
+    return request.accept_languages.best_match(Config['LANGUAGES'])
 
-    else:
-        return request.accept_languages.best_match(app.config['LANGUAGES'])
+def get_user() -> Union[dict, None]:
+    """Returns user dict if ID is found"""
+    login_as = request.args.get("login_as", False)
+    if login_as:
+        user = users.get(int(login_as), False)
+        if user:
+            return user
+    return None
+
+
+@app.before_request
+def before_request():
+    """Finsds user and sets global on flask.g.user"""
+    g.user = get_user()
 
 
 if __name__ == "__main__":
