@@ -3,6 +3,14 @@
 from flask import Flask, render_template
 from flask_babel import Babel
 
+
+users = {
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+}
+
 app = Flask(__name__)
 babel = Babel(app)
 
@@ -13,7 +21,7 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app.config.from_object('1-app.Config')
+app.config.from_object(Config)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
