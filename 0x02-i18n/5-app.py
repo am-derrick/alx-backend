@@ -28,9 +28,9 @@ app.config.from_object(Config)
 def index() -> str:
     """GET /
     Return:
-    - 1-index.html
+    - 5-index.html
     """
-    return render_template('1-index.html')
+    return render_template('5-index.html')
 
 
 @babel.localeselector
