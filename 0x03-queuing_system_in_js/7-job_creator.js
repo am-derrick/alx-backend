@@ -44,3 +44,15 @@ const jobs = [
     message: 'This is the code 4321 to verify your account'
   }
 ];
+
+const kue = require('kue');
+
+const queue = kue.createQueue();
+
+jobs.forEach((job) => {
+    const newJob = queue.create('push_notification_code_2', job).save();
+    newJob.on('enqueue', () => console.log(`Notification job created ${newJob.id}`))
+	.on('complete', () => console.log(`Notification job ${newJob.id} completed`))
+	.on('failed', (err) => console.log(`Notification job ${newJob.id} failed: ${err}`))
+	.on('progress', (progress) => console.log(`Notification job ${newJob.id} ${progress}% complete`));
+});
